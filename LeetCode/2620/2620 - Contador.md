@@ -38,31 +38,36 @@ Esta questão pretende ser uma introdução aos closures . Em JavaScript, funç�
 Exemplo de fechamento
 Em Javascript, você pode declarar funções dentro de outras funções e retorná-las. A função interna tem acesso a quaisquer variáveis ​​declaradas acima dela.
 
+```javascript
 function createAdder(a) {
-return function add(b) {
-const sum = a + b;
-return sum;
-}
+  return function add(b) {
+    const sum = a + b;
+    return sum;
+  };
 }
 const addTo2 = createAdder(2);
 addTo2(5); // 7
+```
+
 A função interna addtem acesso a a. Isso permite que a função externa sirva como uma fábrica de novas funções, cada uma com comportamento diferente.
 
 Fechamentos versus classes
 Você pode notar que o exemplo acima createAdderé muito semelhante a um construtor de classe.
 
+```javascript
 class Adder {
-constructor(a) {
-this.a = a;
-}
+  constructor(a) {
+    this.a = a;
+  }
 
-add(b) {
-const sum = this.a + b;
-return sum;
-}
+  add(b) {
+    const sum = this.a + b;
+    return sum;
+  }
 }
 const addTo2 = new Adder(2);
 addTo2.add(5); // 7
+```
 
 Além das diferenças na sintaxe, ambos os exemplos de código servem essencialmente ao mesmo propósito. Ambos permitem que você passe algum estado em um "construtor" e têm "métodos" que acessam esse estado.
 
